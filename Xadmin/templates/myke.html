@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/css/bootstrap.css"/>
+    <script src="/static/js/bootstrap.js"></script>
+    <script src="/static/js/jquery.js"></script>
+    <title></title>
+    <style>
+        .my_cheng{
+            padding-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+<h4 style="text-align:center">我的客户</h4>
+<div class="my_cheng col-md-8 col-md-offset-2">
+
+   <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>客户名字</th>
+                <th>课程顾问</th>
+                <th>跟进状态</th>
+                <th>跟进日期</th>
+            </tr>
+        </thead>
+       <tbody>
+            {% for foo in ke_list %}
+            <tr>
+                <td>{{foo.customer}}</td>
+                <td>{{foo.consultant}}</td>
+                <td>{{foo.get_status_display}}</td>
+                <td>{{foo.date}}</td>
+            </tr>
+            {% endfor %}
+
+       </tbody>
+   </table>
+
+
+</div>
+</body>
+</html>

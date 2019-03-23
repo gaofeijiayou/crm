@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/css/bootstrap.css"/>
+    <script src="/static/js/bootstrap.js"></script>
+    <title></title>
+</head>
+<body>
+<div class="container">
+  <form action="" class="form-horizontal col-sm-8 col-md-offset-2"  method="post">
+    {% csrf_token %}
+    {% for foo in form %}
+        <div class="form-group">
+            <label for="book{{ forloop.counter }}" class="col-md-2 control-label">{{ foo.label }}</label>
+            <div class="col-md-6">
+                {{ foo }}
+            </div>
+        </div>
+    {% endfor %}
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-6">
+                <button type="submit" class="btn btn-primary"> 修改</button>
+            </div>
+        </div>
+
+
+</form>
+</div>
+
+</body>
+</html>

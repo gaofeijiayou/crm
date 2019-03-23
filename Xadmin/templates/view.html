@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% block con %}
+<div class="my_men">
+    <div class=" col-md-7">
+        <a href="{{ add_url }}" class="btn btn-info">添加</a>
+
+        <form action="" method="get" class="pull-right">
+            <input type="text" name="q"/>
+            <button type="submit" class="btn btn-info">查找</button>
+        </form>
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class=" ">
+                <select class="my_select" name="select_action">
+                    <option value="" checked>选择</option>
+                    {% for ac in action_list %}
+
+                        <option value="{{ ac.fnc }}">{{ ac.dec_name }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class="btn btn-info">GO</button>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <td>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="HeadCheckbox">
+                            </label>
+                        </div>
+                    </td>
+                    {% for head in head_list %}
+                        <th>{{ head }}</th>
+                    {% endfor %}
+                    <th>操作</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for foo in new_list_data %}
+                    <tr>{{ foo.pk }}</tr>
+                    <tr>
+
+                        {% for filde in  foo %}
+
+                            <td>{{ filde }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="pager">
+                        <li><a href="{{ page.first }}">首页</a></li>
+                        <li><a href="{{ page.cur_p }}" aria-label="Previous">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                        </a>
+                        </li>
+
+                        {% for foo in page.count_list %}
+
+                            {% if foo.val == cur_page %}
+                                <li class="active"><a href="{{ foo.url }}">{{ foo.val }}</a></li>
+                            {% else %}
+                                <li><a href="{{ foo.url }}">{{ foo.val }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        <li>
+                            <a href="{{ page.cur_n }}" aria-label="Previous">
+                                <span class="glyphicon glyphicon-arrow-right"></span>
+                            </a>
+                        </li>
+                        <li><a href="{{ page.last }}">尾页</a></li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+    </div>
+{% for f,m in get_filter_linktage.items %}
+    <div class="col-md-3">
+
+    <div class="panel panel-primary ">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ f }}</h3>
+        </div>
+        <div class="panel-body">
+            {% for foo in m %}
+                <p>{{ foo|safe }}</p>
+            {% endfor %}
+
+
+        </div>
+
+    </div>
+</div>
+{% endfor %}
+
+
+</div>
+
+
+
+
+<script>
+    $(function () {
+        $('#HeadCheckbox').change(function () {
+
+            if ($(this).is(':checked')) {
+
+                $('.BodyCheckbox').prop('checked', true);
+            } else {
+
+                $('.BodyCheckbox').prop('checked', false);
+            }
+        })
+    })
+</script>
+{% endblock %}

@@ -1,0 +1,89 @@
+.navbar-default {
+  padding: 15px 0px;
+  background-color: #708090;
+}
+.navbar-default .navbar-header .navbar-brand {
+  color: white;
+}
+.navbar-default .navbar-collapse .dinav {
+  display: none;
+}
+.navbar-default .navbar-collapse .navbar-right li a {
+  color: white;
+}
+.navbar-default .navbar-collapse .navbar-right li a:focus,
+.navbar-default .navbar-collapse .navbar-right li a:active,
+.navbar-default .navbar-collapse .navbar-right li a:hover,
+.navbar-default .navbar-collapse .navbar-right li a.active {
+  color: blueviolet;
+}
+.navbar-default .navbar-collapse .navbar-right span {
+  color: white;
+}
+.navbar-default .navbar-collapse .navbar-right .dropdown-menu {
+  background-color: #708090;
+}
+@media (max-width: 768px) {
+  .navbar-default {
+  padding: 0px;
+}
+.navbar-default .navbar-collapse .dinav {
+  display: block;
+}
+.navbar-default .navbar-collapse .dinav li a {
+  color: white;
+}
+.navbar-default .navbar-collapse .dinav li a:focus,
+.navbar-default .navbar-collapse .dinav li a:active,
+.navbar-default .navbar-collapse .dinav li a:hover,
+.navbar-default .navbar-collapse .dinav li a.active {
+  color: blueviolet;
+}
+.navbar-default .navbar-collapse .navbar-right .dropdown-menu li a {
+  color: white;
+}
+
+}
+.left-se {
+  width: 15%;
+  background-color: aqua;
+  position: fixed;
+  top: 80px;
+  right: 85%;
+  bottom: 0px;
+}
+@media (max-width: 768px) {
+  .left-se {
+  display: none;
+}
+
+}
+.right-se {
+  width: 85%;
+  background-color: ghostwhite;
+  position: fixed;
+  top: 80px;
+  right: 0px;
+  bottom: 0px;
+  left: 15%;
+  overflow: auto;
+}
+@media (max-width: 768px) {
+  .right-se {
+  margin-top: -20px;
+  width: 100%;
+  height: 100%;
+  background-color: ghostwhite;
+  position: static;
+}
+
+}
+.table-list {
+  margin-top: 40px;
+}
+.addtitle{
+    margin-bottom: 15px;
+}
+.menu {
+    margin-top:50px;
+}

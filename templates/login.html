@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+    <title></title>
+</head>
+<body>
+<form action="" method="post">
+    {% csrf_token %}
+    <p>用户名<input type="text" name="user"/></p>
+
+    <p>用户密码<input type="password" name="password"/></p>
+    <p><input type="submit" value="登录"/></p>
+</form>
+</body>
+</html>

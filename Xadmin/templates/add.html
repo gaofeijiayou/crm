@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/css/bootstrap.css"/>
+    <script src="/static/js/bootstrap.js"></script>
+    <script src="/static/js/jquery.js"></script>
+    <title></title>
+    <style>
+    input,select {
+        display: block;
+        width: 100%;
+        height: 34px;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #555;
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+        -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+    </style>
+</head>
+<body>
+<div class="container">
+  <form action="" class="form-horizontal col-sm-8 col-md-offset-2"  method="post">
+    {% csrf_token %}
+
+    {% for foo in form %}
+
+        <div class="form-group">
+            <label for="book{{ forloop.counter }}" class="col-md-2 control-label">{{ foo.label }}</label>
+            <div class="col-md-6">
+                {{ foo }}
+            </div>
+
+            {% if foo.is_pop %}
+                <a  pop_url="{{foo.addurl  }}" class="pop_a" style="font-size: 32px;text-decoration: none; cursor: pointer ">+</a>
+            {% endif %}
+        </div>
+    {% endfor %}
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-6">
+                <button type="submit" class="btn btn-primary">添加</button>
+            </div>
+        </div>
+
+
+</form>
+</div>
+<script>
+
+
+    $(function(){
+        $('.pop_a').click(function(){
+            var addurl = $(this).attr('pop_url');
+            var pop_id = $(this).prev().children('select').attr('id');
+            addurl = addurl+'?pop_id='+pop_id;
+            window.open(addurl, "", "width=600, height=400, top=100, left=50")
+        })
+    })
+
+    function pop_re(pid, title, select, code){
+
+        var $option = $('<option>');
+
+        $option.html(title);
+        if(code){
+            $option.val(code);
+        }else{
+            $option.val(pid);
+        }
+
+
+        $option.attr('selected', 'selected');
+
+        $('#'+select).append($option)
+
+
+    }
+</script>
+</body>
+</html>
